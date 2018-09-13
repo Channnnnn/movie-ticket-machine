@@ -1,0 +1,16 @@
+{
+  "name": "movie-ticket-machine",
+  "version": "1.0.0",
+  "description": "Simple movie ticket machine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Channnnnn",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^6.1.2",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0"
+  }
+}
