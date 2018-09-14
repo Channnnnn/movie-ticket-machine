@@ -1,0 +1,65 @@
+@import '_var.scss';
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Prompt', 'sans-serif';
+  background-color: #f8f8f8;
+}
+h1{
+  color: #FFCC33;
+}
+
+nav{
+  padding: 10px;
+  a{
+    padding: 10px;
+    text-decoration: none;
+    color: $primary-link;
+  }
+}
+
+.center{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tighten{
+  width: fit-content;
+}
+
+.flex{
+  display: flex;
+  > *{
+    margin: 0px 10px;
+  }
+  &.col{
+    flex-direction: column;
+  }
+  &.row{
+    flex-direction: row;
+  }
+}
+
+.rounded {
+  border-radius: 8px;
+  :first-child, :first-child img{
+    border-radius: 8px 8px 0 0;
+  }
+  :last-child, :last-child img{
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+.card{
+  background-color: #444;
+  box-shadow: 0 0 3px 1px #0000002C;
+  text-decoration: none;
+}
+
+section{
+  padding: 1em 0;
+  &.main{
+    background-color: #222222;
+  }
+}
