@@ -1,7 +1,12 @@
 import Document, {Head,Main,NextScript} from 'next/document';
 import Navbar from '../components/Navbar';
+import {init as initFirebase} from '../javascript/firebase'
 
 export default class MyDocument extends Document {
+  constructor(props){
+    super(props);
+    initFirebase();
+  }
   render() {
     return (
       <html>
@@ -16,6 +21,7 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </html>
+      
     );
   }
 };

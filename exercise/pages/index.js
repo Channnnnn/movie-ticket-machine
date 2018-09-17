@@ -1,5 +1,6 @@
 import '../scss/styles.scss';
 import Poster from '../components/Poster';
+import TableEntry from '../components/TableEntry';
 
 const data = {
     movies:[
@@ -12,15 +13,18 @@ const data = {
 }
 
 const Index = () => (
-    <section className="main">
-        <h1 className="center">Now Showing</h1>
-        <div className="flex row center tighten scroll">
-            {console.log(data)}
-            {data.movies.map((movie) => (
-                <Poster movie={movie}></Poster>
-            ))}
-        </div>
-    </section>
+    <div>
+        <section className="main">
+            <h1 className="center">Now Showing</h1>
+            <div className="flex row center tighten scroll">
+                {console.log(data)}
+                {data.movies.map((movie) => (
+                    <Poster movie={movie}></Poster>
+                ))}
+            </div>
+        </section>
+        <TableEntry></TableEntry>
+    </div>
 );
 
 export default Index;

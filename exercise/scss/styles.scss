@@ -19,6 +19,13 @@ nav{
   }
 }
 
+section{
+  padding: 1em 0;
+  &.main{
+    background-color: #222222;
+  }
+}
+
 .center{
   text-align: center;
   margin-left: auto;
@@ -55,11 +62,4 @@ nav{
   background-color: #444;
   box-shadow: 0 0 3px 1px #0000002C;
   text-decoration: none;
-}
-
-section{
-  padding: 1em 0;
-  &.main{
-    background-color: #222222;
-  }
 }

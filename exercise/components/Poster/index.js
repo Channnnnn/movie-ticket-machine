@@ -12,8 +12,8 @@ class Poster extends Component {
           <div title="movie_name" className="poster">
             <img src="" alt="movie_name"/>
           </div>
-          <div className="title">{name}</div>
-          <div className="subtitle">({duration} min)</div>
+          <div className="poster-card-title">{name}</div>
+          <div className="poster-card-subtitle">({duration} min)</div>
         </a>
       </Link>
     );
