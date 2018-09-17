@@ -1,0 +1,38 @@
+.movieTableEntry{
+  display: grid;
+  grid-template-columns: auto 2fr 1fr;
+  grid-column-gap: 8px;
+  .entry-moviePoster{
+    grid-area: 'poster';
+    width: 200px;
+    img{
+      width: 100%;
+      background-color: grey;
+      object-fit: contain;
+    }
+  }
+  .entry-details{
+    // outline: pink 1px solid;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    .entry-title{
+      font-style: italic;
+      font-size: 1.1em;
+    }
+    .entry-duration{
+      font-size: .75em;
+    }
+    .entry-synopsis{
+      text-align: center;
+      font-style: italic;
+    }
+    .entry-description{
+      font-weight: 300;
+      font-size: 0.85em;
+    }
+  }
+  .entry-action{
+    // outline: lightseagreen 1px solid;
+  }
+}
