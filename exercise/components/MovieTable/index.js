@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MovieTableEntry from '../MovieTableEntry';
+import MovieEntry from '../MovieEntry';
 import './movieTable.scss'
 
 class MovieTable extends Component {
@@ -9,12 +9,17 @@ class MovieTable extends Component {
 
   render() {
     let { movies } = this.props
-    
     return (
       <div className="movieTable">
+        <div className="config">
+          <div className="sort">
+            <select name="sort" id="sort">
+              <option value="">Name</option>
+            </select></div>
+        </div>
         {   
           movies.map((movie) => {
-            return <MovieTableEntry key={movie.name} movie={movie}></MovieTableEntry>
+            return <MovieEntry key={movie.name} movie={movie}></MovieEntry>
           })
         }
       </div>

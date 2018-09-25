@@ -1,14 +1,9 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import Navbar from '../components/Navbar';
-import firebase from '../firebase'
 
 export default class MyDocument extends Document {
   constructor(props){
     super(props);
-  }
-
-  componentDidMount(){
-    firebase;
   }
 
   render() {

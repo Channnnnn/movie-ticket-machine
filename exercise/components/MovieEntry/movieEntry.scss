@@ -1,14 +1,16 @@
-.movieTableEntry{
+.movieEntry{
   display: grid;
   grid-template-columns: auto 2fr 1fr;
   grid-column-gap: 8px;
+  margin: 5px 0;
   .entry-moviePoster{
     grid-area: 'poster';
-    width: 200px;
+    width: 150px;
     img{
+      display: block;
       width: 100%;
-      background-color: grey;
-      object-fit: contain;
+      // background-color: grey;
+      // object-fit: contain;
     }
   }
   .entry-details{

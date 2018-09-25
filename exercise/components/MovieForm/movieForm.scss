@@ -1,0 +1,41 @@
+.movieForm{
+  background-color: white;
+  box-shadow: 0 0 3px 1px #88888888;
+  display: inline-block;
+  margin: 8px;
+  padding: 12px;
+  // width: calc(50% - 40px);
+  width: 70%;
+  .input-multiline{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    textarea{
+      border: #003366 1px solid;
+      min-height: 6.5em;
+      color: #006633;
+      &:disabled{
+        background-color: white;
+        border-color: #eeeeee;
+        color: sienna;  
+      }
+    }
+  }
+  .input-text{
+    display: grid;
+    grid-template-columns: 150px 1fr auto;
+    input[type=text]{
+      border: #006633 1px solid;
+      color: #006633;
+      &:disabled{
+        background-color: white;
+        border-color: #eeeeee;
+        color: sienna;      
+      }
+    }
+    span{
+      margin-left: 3px;
+      width: 40px;
+    }
+    margin-top: 3px;
+  }
+}

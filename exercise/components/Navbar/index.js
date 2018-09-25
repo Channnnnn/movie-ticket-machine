@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'next/link'
+import './navbar.scss'
 
 class Navbar extends Component {
   constructor(props){
@@ -9,14 +10,14 @@ class Navbar extends Component {
   render() {
     return (
       <nav>
-        <div>
           <Link href="/">
             <a title="Our API">Home</a>
           </Link>
           <Link href="/about">
             <a title="About">About</a>
           </Link>
-        </div>
+          <input type="search" name="movie-search" id="movie-search"/>
+          <input type="button" value="Search"/>
       </nav>
     );
   }

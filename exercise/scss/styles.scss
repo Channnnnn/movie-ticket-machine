@@ -6,12 +6,67 @@ body{
   font-family: 'Prompt', Arial, Helvetica, sans-serif;
   background-color: #f8f8f8;
 }
+
+input,textarea,select,option{
+  font-family: 'Prompt', Arial, Helvetica, sans-serif;
+  padding: 2px;
+}
+
+button{
+  margin-right: 4px;
+  border: none;
+  border-radius: 6px;
+  background-color: #30b7ec;
+  color: white;
+  font-family: 'Prompt', Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+  padding: 2px 8px;
+  min-width: 52px;
+  &.danger{
+    background-color: rgb(223, 63, 52);
+  }
+  &.confirm{
+    background-color: #84cc32;
+  }
+  &.ticket{
+    display: block;
+    border: none;
+    border-radius: 8px;
+    background-color: crimson;
+    color: white;
+    font-size: 1.25em;
+    padding: 8px 18px;
+    min-width: 140px;
+  }
+}
+
+select{
+  border: none;
+  padding: 5px 6px;
+  min-width: 140px;
+  font-size: 1em;
+  border-color: #222222;
+  background-color: #222222;
+  color: #ffcc33;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+div.form{
+  textarea, input{
+    resize: vertical;
+    border-radius: 2px;
+    border: black 1px solid;
+  }
+}
+
 h1{
   color: #FFCC33;
 }
 
 nav{
   padding: 10px;
+  background-color: #333333;
   a{
     padding: 10px;
     text-decoration: none;
@@ -27,12 +82,15 @@ a.card{
 section{
   padding: 1em 0;
   &.main{
+    padding: 0.05px;
     background-color: #222222;
+  }
+  &.movieList{
+    width: 960px;
   }
 }
 
 .center{
-  text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
@@ -43,7 +101,7 @@ section{
 .flex{
   display: flex;
   > *{
-    margin: 0px 10px;
+    margin: 0px 7px;
   }
   &.col{
     flex-direction: column;
@@ -63,8 +121,24 @@ section{
   }
 }
 
-.card{
-  background-color: #444;
-  box-shadow: 0 0 3px 1px #0000002C;
-  text-decoration: none;
+.h-scroll{
+  padding: 5px 0;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #222222;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+  &:hover {
+    background-color: #9e9e9e;
+  }
 }
