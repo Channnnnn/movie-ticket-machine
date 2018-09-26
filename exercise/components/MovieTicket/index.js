@@ -6,12 +6,15 @@ class MovieTicket extends Component {
     this.state = { 
       cashRecieved: false,
       amount: 1,
-      totalPrice: 0
+      totalPrice: this.props.movie.price,
+      cash: 0,
+      sufficientCash: false
     }
     this.getTotalPrice = this.getTotalPrice.bind(this)
     this.validatePositive = this.validatePositive.bind(this)
     this.validateAmount = this.validateAmount.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
+    this.sufficientCash = this.sufficientCash.bind(this)
   }
 
   handleKeyPress(event){
@@ -22,6 +25,13 @@ class MovieTicket extends Component {
         document.getElementById('cash').focus()
       }
     }
+  }
+
+  handleCash(event){
+    const {value} = event.target;
+    this.setState({
+      cash: value
+    }) 
   }
 
   handleAmountChange(event){
@@ -62,6 +72,10 @@ class MovieTicket extends Component {
     })
   }
 
+  sufficientCash(){
+    return this.state.cash >= this.state.totalPrice
+  }
+
   render() { 
     const {movie} = this.props
     return ( 
@@ -75,10 +89,10 @@ class MovieTicket extends Component {
             <button className="increment" onClick={this.handleIncrement.bind(this)}>+</button>
           </div>
           <div className="checkoutForm">
-            <h4>Total price: {this.getTotalPrice()} THB</h4>
+            <h4>Total price: {this.state.totalPrice} THB</h4>
             <label htmlFor="cash">Cash</label>
-            <input type="number" name="cash" id="cash" defaultValue="0"/>
-            <button>Confirm</button>
+            <input type="number" name="cash" id="cash" value={this.state.cash} defaultValue="0" onChange={this.handleCash.bind(this)}/>
+            <button disabled={!this.state.sufficientCash}>Confirm</button>
           </div>
           <div className="changeForm">
             <h4>Change</h4>
