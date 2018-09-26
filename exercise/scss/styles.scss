@@ -28,16 +28,6 @@ button{
   &.confirm{
     background-color: #84cc32;
   }
-  &.ticket{
-    display: block;
-    border: none;
-    border-radius: 8px;
-    background-color: crimson;
-    color: white;
-    font-size: 1.25em;
-    padding: 8px 18px;
-    min-width: 140px;
-  }
 }
 
 select{

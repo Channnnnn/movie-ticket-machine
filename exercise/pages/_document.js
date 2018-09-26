@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
         <Head>
           <title>Movie Ticket Machine - ระบบซื้อตั๋วหนังออนไลน์</title>
           <link rel="stylesheet" href="/_next/static/style.css"/>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt:300,400,400i,700" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt:400,400i,600,600i" />
         </Head>
         <body>
           <Navbar />

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import MovieEntry from '../components/MovieEntry';
+import MovieTicket from '../components/MovieTicket';
 import script from '../script';
+import Modal from '../components/Modal';
 
 class Movie extends Component {
   constructor(props){
@@ -14,8 +16,10 @@ class Movie extends Component {
     let { query } = this.props.url;
     console.log(query.id);
     script.GetMovieDB(query.id).once('value', snapshot => {
+      let movie = snapshot.val()
+      movie.name = query.id
       this.setState({ 
-        movie: snapshot.val() 
+        movie: movie 
       })
     })
   }
@@ -23,7 +27,8 @@ class Movie extends Component {
   render() {
     return (
       <div>
-        <MovieEntry movie={this.state.movie}></MovieEntry>
+          <MovieEntry movie={this.state.movie}></MovieEntry>
+          <MovieTicket movie={this.state.movie}></MovieTicket>
       </div>
     );
   }

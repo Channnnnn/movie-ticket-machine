@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../scss/styles.scss';
 import Poster from '../components/Poster';
 import MovieTable from '../components/MovieTable';
+import Modal from '../components/Modal';
 import script from '../script';
 
 export default class Index extends Component {
@@ -34,7 +35,7 @@ export default class Index extends Component {
                     </div>
                 </section>
                 <section className="movieList center">
-                    <MovieTable movies={this.state.movies}></MovieTable> 
+                    <MovieTable movies={this.state.movies}></MovieTable>
                 </section>
             </div>
         );

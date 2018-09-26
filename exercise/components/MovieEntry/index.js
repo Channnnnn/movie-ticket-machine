@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Link from 'next/link';
+import {Link} from '../../routes';
 import './movieEntry.scss';
 import script from '../../script';
 
@@ -43,21 +43,18 @@ class MovieEntry extends Component {
           }
         </div>
         <div className="entry-details">
-          <span className="entry-title">{movie.name}</span>
-          <span className="entry-duration">{movie.duration} min</span>
+            <span className="entry-title">{movie.name}</span>
+          <div>
+            <span className="entry-duration">{movie.duration} min</span>
+            <span className="entry-price">{movie.price} THB</span>
+          </div>
           <span className="entry-synopsis">Synopsis</span>
           <span className="entry-description">
             {movie.description}
           </span>
         </div>
         <div className="entry-action">
-          <select name="showtimes" id="showtimes">
-            {
-              script.IsNotUndefined(movie.showtimes) && 
-                movie.showtimes.map(time => { return <option key={time} value={time}>{time}</option> })             
-            }
-          </select>
-          <Link href="#"><button className='ticket'>Buy Ticket</button></Link>
+          {this.props.children}
         </div>
       </div>
     );

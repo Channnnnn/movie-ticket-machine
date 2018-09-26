@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import MovieEntry from '../MovieEntry';
+import MovieEntry from '../MovieEntry/index';
+import MovieAction from '../MovieEntry/action';
 import './movieTable.scss'
 
 class MovieTable extends Component {
@@ -19,7 +20,8 @@ class MovieTable extends Component {
         </div>
         {   
           movies.map((movie) => {
-            return <MovieEntry key={movie.name} movie={movie}></MovieEntry>
+            const movieAction = <MovieAction showtimes={movie.showtimes} name={movie.name}></MovieAction>
+            return <MovieEntry key={movie.name} movie={movie}>{movieAction}</MovieEntry>
           })
         }
       </div>
