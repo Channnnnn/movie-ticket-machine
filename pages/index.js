@@ -79,7 +79,7 @@ export default class Index extends Component {
         else {
             if (option === 'next'){
                 script.GetAllMovie().then((movies) => {
-                    let nextMovie = script.SortByNextShowtime(movies.result)
+                    let nextMovie = script.SortByNextShowtime(movies)
                     this.setState({movies: nextMovie})
                 }).catch((err) => { console.error(err.message); });
             }
