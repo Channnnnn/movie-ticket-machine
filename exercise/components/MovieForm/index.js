@@ -10,6 +10,7 @@ class MovieForm extends Component {
       isEditing: false,
       movieForm: JSON.parse(JSON.stringify(this.props.movie))
     }
+    this.handleClear = this.handleClear.bind(this)
   }
 
   handleInputChange(event){
@@ -25,21 +26,34 @@ class MovieForm extends Component {
     }/*,()=>{console.log("After " + this.props.movie[name], this.state.movieForm[name]);}*/)
   }
 
+  handleClear(){
+    if (confirm('Clear form?')){
+      document.getElementById('name').value = "";
+      document.getElementById('description').value = "";
+      document.getElementById('price').value = "";
+      document.getElementById('duration').value = "";
+      document.getElementById('showtimes').value = "";
+      document.getElementById('posterFile').value = "";
+    }
+  }
+
   handleSave(newMovie){
     if (newMovie.posterFile){
       script.UploadPoster(newMovie.posterFile).then((fileLocation) => {
         this.setState((prevState) => {
           prevState.movieForm['posterStorage'] = fileLocation;
           return prevState;
-        })
+        });
         if (typeof newMovie.name != 'undefined'){
           script.UpsertMovie(newMovie).then(() => {
             this.setState((prevState) => {
-              prevState.movieForm = {}
+              prevState.movieForm = this.props.movie;
               return prevState
+            }, ()=>{
+              this.props.GetAllMovie()
+              this.handleClear()
+              console.log("REFRESHING MOVIE LIST");
             })
-            console.log("REFRESHING MOVIE LIST");
-            this.props.GetAllMovie()
           }).catch(err => {
             console.error(err.message);
             script.RemovePoster(newMovie.posterFile)
@@ -63,14 +77,26 @@ class MovieForm extends Component {
     console.log("UPDATING")
     let originalName = this.props.movie.name;
     let newName = data.name;
+    let originalPoster = this.props.movie.posterStorage;
     if (data.posterFile){
       console.log('Has file to upload first')
+      script.UploadPoster(data.posterFile).then((fileLocation) => {
+        this.setState((prevState) => {
+          prevState.movieForm['posterStorage'] = fileLocation;
+          return prevState;
+        }, () => {
+          script.UpsertMovie(data)
+          let newPoster = this.state.movieForm.posterStorage;
+          if (newPoster !== originalPoster){
+            script.RemovePoster(originalPoster)
+          }
+        });
+      })
     }
     else {
       console.log('No file, proceed')
-    }
-
-    script.UpsertMovie(data)    
+      script.UpsertMovie(data)  
+    }  
     if (originalName != newName){
       script.RemoveMovie(originalName).then(() => {
         console.log("REFRESHING MOVIE LIST");
@@ -112,44 +138,53 @@ class MovieForm extends Component {
         <div className="input-text">
           <label htmlFor="name">Name</label>
             <input type="text" name="name" id="name" onChange={this.handleInputChange.bind(this)}
-            value={movie.name}disabled={!editable} required/>
+            value={movie.name}disabled={!editable}/>
         </div>
         <div className="input-multiline">
           <label htmlFor="description">Description</label>
             <textarea name="description" id="description" onChange={this.handleInputChange.bind(this)}
-            value={movie.description} disabled={!editable} required></textarea>
+            value={movie.description} disabled={!editable}></textarea>
         </div>
         <div className="input-text">
           <label htmlFor="price">Price</label>
             <input type="text" name="price" id="price" onChange={this.handleInputChange.bind(this)}
-            value={movie.price} disabled={!editable} required/>
+            value={movie.price} disabled={!editable}/>
           <span>THB</span>
         </div>
         <div className="input-text">
           <label htmlFor="duration">Duration</label>
             <input type="text" name="duration" id="duration" onChange={this.handleInputChange.bind(this)}
-            value={movie.duration} disabled={!editable} required/>
+            value={movie.duration} disabled={!editable}/>
           <span>min</span>
+        </div>
+        <div className="input-text">
+          <label htmlFor="showtimes">Showtimes</label>
+            <input type="text" name="showtimes" id="showtimes" onChange={this.handleInputChange.bind(this)}
+            value={movie.showtimes} disabled={!editable}/>
         </div>
         {
           !this.props.adder &&
         <div className="input-text">
           <label htmlFor="posterStorage">Poster Storage</label>
             <input type="text" name="posterStorage" id="posterStorage" onChange={this.handleInputChange.bind(this)}
-            value={movie.posterStorage} disabled={!editable} required/>
+            value={movie.posterStorage} disabled={!editable}/>
         </div>
         }
         <div className="input-text">
           <label htmlFor="posterFile">Poster Image</label>
             <input type="file" name="posterFile" id="posterFile" onChange={this.handleInputChange.bind(this)}
-            disabled={!editable} required/>
+            disabled={!editable}/>
         </div>
         {
           this.props.adder && 
           <button onClick={this.handleSave.bind(this, this.state.movieForm)}>Save</button>
         }
         {
-          this.props.movie.name != "" && !this.state.isEditing &&
+          this.props.adder && 
+          <button style={{float:'right'}} onClick={this.handleClear}>Clear</button>
+        }
+        {
+          !this.props.adder && !this.state.isEditing &&
             <button onClick={this.handleEdit.bind(this)}>Edit</button>
         }
         {
@@ -159,7 +194,7 @@ class MovieForm extends Component {
           this.state.isEditing && <button onClick={this.handleCancel.bind(this)}>Cancel</button>
         }
         {
-          this.props.movie.name != "" && !this.state.isEditing &&
+          !this.props.adder && !this.state.isEditing &&
           <button className="danger" onClick={this.handleDelete.bind(this, this.props.movie.name)}>Delete</button>
         }        
       </div>

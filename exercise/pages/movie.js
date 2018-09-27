@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MovieEntry from '../components/MovieEntry';
 import MovieTicket from '../components/MovieTicket';
 import script from '../script';
-import Modal from '../components/Modal';
+import Navbar from '../components/Navbar';
 
 class Movie extends Component {
   constructor(props){
@@ -14,7 +14,6 @@ class Movie extends Component {
 
   componentDidMount(){
     let { query } = this.props.url;
-    console.log(query.id);
     script.GetMovieDB(query.id).once('value', snapshot => {
       let movie = snapshot.val()
       movie.name = query.id
@@ -27,8 +26,13 @@ class Movie extends Component {
   render() {
     return (
       <div>
-          <MovieEntry movie={this.state.movie}></MovieEntry>
-          <MovieTicket movie={this.state.movie}></MovieTicket>
+        <Navbar />
+        <section className="main full-height">
+          <div className="ticket center">
+            <MovieEntry movie={this.state.movie} darkMode={true}></MovieEntry>
+            <MovieTicket movie={this.state.movie}></MovieTicket>
+          </div>
+        </section>
       </div>
     );
   }

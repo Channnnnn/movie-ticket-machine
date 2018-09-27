@@ -1,5 +1,4 @@
 import Document, { Head, Main, NextScript } from 'next/document';
-import Navbar from '../components/Navbar';
 
 export default class MyDocument extends Document {
   constructor(props){
@@ -13,9 +12,9 @@ export default class MyDocument extends Document {
           <title>Movie Ticket Machine - ระบบซื้อตั๋วหนังออนไลน์</title>
           <link rel="stylesheet" href="/_next/static/style.css"/>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt:400,400i,600,600i" />
+          <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         </Head>
         <body>
-          <Navbar />
           <Main />
           <NextScript />
         </body>

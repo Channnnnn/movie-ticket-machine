@@ -10,20 +10,7 @@ const handler = routes.getRequestHandler(app)
 app.prepare()
   .then(() => {
     const server = express()
-    server.use(handler).listen(3000)
-
-    // server.get('/api/shows', (req,res) => {
-    //   return res.end("Debugging API")
-    // })
-
-    // server.get('*', (req, res) => {
-    //   return handle(req, res)
-    // })
-
-    // server.listen(port, (err) => {
-    //   if (err) throw err
-    //   console.log(`> Ready on http://localhost:${port}`)
-    // })
+    server.use(handler).listen(port)
   })
   .catch(ex => {
     console.error(ex.stack);

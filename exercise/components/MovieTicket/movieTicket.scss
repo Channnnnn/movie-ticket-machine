@@ -1,0 +1,222 @@
+@media screen and (max-width: 600px){
+  .movieTicket{
+    grid-template-columns: unset !important;
+  }
+  section{
+    // padding: 0 !important;
+  }
+}
+
+.movieTicket{
+  background-color: #111111;
+  border-radius: 8px;
+  max-width: 640px;
+  text-align: center;
+  margin: auto;
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  .ticketTime{
+    background-color: crimson;
+    font-size: 1rem; 
+  }
+
+  h2{
+    font-size: 1.7rem;
+    margin: 1rem 0;
+    color: #ffcc33;
+  }
+  .banner{
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #222222;
+    background-color: #ffcc33;
+    padding: .25em;
+  }
+  h3{
+    color: white;
+    margin-top: .25rem;
+    margin-bottom: .75rem;
+    label{
+      margin-left: 8px;
+      background-color: #333333;
+      color: #ececec;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+  }
+  .ticketPrice{
+    margin-top: 0;
+  }
+  .ticketForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    button{
+      width: 32px;
+      height: 36px;
+      font-size: 3em;
+      font-weight: bold;
+      line-height: 0em;
+      background-color: #ffcc33;
+      color: #111111;
+      margin: unset;
+      &:hover{
+        box-shadow: #ffcc3388 0 0 18px 3px;
+        color: white;
+      }
+      &:focus-within{
+        outline: none;
+        border: white 2px solid;
+      }
+      &.decrement{
+        border-radius: 6px 0 0 6px;
+      }
+      &.increment{
+        border-radius: 0 6px 6px 0;
+      }
+    }
+    input{
+      vertical-align: top;
+      width: 128px;
+      font-size: 1.5em;
+      line-height: 1em;
+      font-weight: bold;
+      height: 36px;
+      border: #ffcc33 3px solid;
+      background-color: #111111;
+      color: #ffcc33;
+      text-align: center;
+      box-sizing: border-box;
+      &:hover{
+        box-shadow: #ffcc3388 0 0 18px 3px;
+        color: white;
+      }
+    }
+    
+  }
+  .checkoutForm{
+    font-weight: bold;
+    .cashTitle{
+      display: block;
+      color: #ececec;
+    }
+    .cashForm{
+      margin: auto;
+      width: fit-content;
+      width: -moz-fit-content;
+      height: 30px;
+      font-size: 1.25rem;
+      border-radius: 6px;
+      border: #ffcc33 3px solid;
+      background-color: #111111;
+      color: #ffcc33;
+    }
+    input{
+      box-sizing: border-box;
+      vertical-align: top;
+      height: 30px;
+      width: 96px;
+      border-radius: 6px 0 0 6px;
+      border: none;
+      background-color: transparent;
+      font-size: 1.25rem;
+      font-weight: bold;
+      line-height: 1rem;
+      text-align: right;
+      color: #ffcc33;
+      margin-top: 0;
+    }
+    label{
+      height: 30px;
+      padding-right: 6px;
+      vertical-align: top;
+    }
+    #paymentButton{
+      height: 30px;
+      margin: unset;
+      border-radius: 0 2px 2px 0;
+      font-size: 1.25rem;
+      line-height: 1rem;
+      font-weight: bold;
+      border-left: #222222 2px solid;
+      background-color: #ffcc33;
+      color: #111111;
+      transition: all .3s;
+      &:disabled{
+        background-color: #333333;
+        color: #222222;
+      }
+    }
+  }
+  .changeForm{
+    .changeAmount{
+      // margin-bottom: 0;
+    }
+    .changeDisplay{
+      label{
+        vertical-align: middle;
+        line-height: 16px;
+        font-weight: bold;
+        margin-right: 4px;
+        margin-bottom: 4px;
+        background-color: #ffcc33;
+        padding: 6px;
+        border-radius: 2px;
+        box-sizing: border-box;
+        height: 28px;
+        width: 52px;
+        display: inline-block;
+
+        &.change1,
+        &.change2,
+        &.change5,
+        &.change10{
+          height: 28px;
+          width:28px;
+          border-radius: 50%;  
+        }
+
+        &.change1{
+          width: 20px;
+          height: 20px;
+          line-height: 10px;
+          background-color: lightgray;
+        }
+        &.change2{
+          background-color: goldenrod;
+          height: 22px;
+          width: 22px;
+          line-height: 11px;
+        }
+        &.change5{
+          height: 25px;
+          width: 25px;
+          line-height: 14px;
+          background-color: #cbf7fd;
+        }
+        &.change10{
+          line-height: 22px;
+          padding: 0;
+          border: gray 4px solid;
+        }
+        &.change20{
+          background-color: darkseagreen;
+        }
+        &.change50{
+          background-color: skyblue;
+        }
+        &.change100{
+          background-color: lightcoral
+        }
+        &.change500{
+          background-color: plum;
+        }
+        &.change1000{
+          background-color: beige;
+        }
+      }
+    }
+  }
+}

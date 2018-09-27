@@ -6,6 +6,12 @@ import './movieTable.scss'
 class MovieTable extends Component {
   constructor(props){
     super(props);
+    this.handleSortOption = this.handleSortOption.bind(this)
+  }
+
+  handleSortOption(event){
+    let { value } = event.target
+    this.props.sortFunction(value)
   }
 
   render() {
@@ -14,8 +20,10 @@ class MovieTable extends Component {
       <div className="movieTable">
         <div className="config">
           <div className="sort">
-            <select name="sort" id="sort">
-              <option value="">Name</option>
+            <select name="sort" id="sort" onChange={this.handleSortOption}>
+              <option value="key">Name</option>
+              <option value="price">Price</option>
+              <option value="next">Coming Up</option>
             </select></div>
         </div>
         {   
@@ -24,6 +32,7 @@ class MovieTable extends Component {
             return <MovieEntry key={movie.name} movie={movie}>{movieAction}</MovieEntry>
           })
         }
+        {this.props.children}
       </div>
     );
   }

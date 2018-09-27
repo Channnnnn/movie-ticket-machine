@@ -1,4 +1,6 @@
-import * as Firebase from 'firebase';
+import FirebaseApp from 'firebase/app';
+import FirebaseDB from 'firebase/database';
+import FirebaseStorage from 'firebase/storage';
 
 const config = {
   apiKey: "AIzaSyDEjsRbm9xU-mw2N_4vMIH9FPkSqKoIXso",
@@ -9,6 +11,6 @@ const config = {
   messagingSenderId: "322809962795"
 };
 
-let firebase = !Firebase.apps.length ? Firebase.initializeApp(config) : Firebase.app();
+let firebase = !FirebaseApp.apps.length ? FirebaseApp.initializeApp(config) : FirebaseApp.app();
 
 export default firebase

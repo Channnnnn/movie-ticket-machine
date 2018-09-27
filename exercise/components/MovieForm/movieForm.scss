@@ -4,8 +4,7 @@
   display: inline-block;
   margin: 8px;
   padding: 12px;
-  // width: calc(50% - 40px);
-  width: 70%;
+  width: calc(100% - 40px);
   .input-multiline{
     display: grid;
     grid-template-rows: auto 1fr;

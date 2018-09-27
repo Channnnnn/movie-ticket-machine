@@ -4,7 +4,7 @@ body{
   margin: 0;
   padding: 0;
   font-family: 'Prompt', Arial, Helvetica, sans-serif;
-  background-color: #f8f8f8;
+  background-color: #222222;
 }
 
 input,textarea,select,option{
@@ -53,6 +53,13 @@ div.form{
   }
 }
 
+.counter{
+  color: #84cc32;
+  border-radius: 4px;
+  border: 2px #84cc32 solid;
+  padding: 4px;
+}
+
 h1{
   color: #FFCC33;
 }
@@ -60,10 +67,17 @@ h1{
 nav{
   padding: 10px;
   background-color: #333333;
+  height: 52px;
+  box-sizing: border-box; 
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  z-index: 50;
   a{
     padding: 10px;
     text-decoration: none;
-    color: $primary-link;
+    font-weight: bold;
+    color: #FFCC33;
   }
 }
 
@@ -71,15 +85,17 @@ a.card{
   user-select: none;
   -webkit-user-drag: none;
 }
-
+.main{
+  padding-top: 52px;
+  background-color: #222222;
+}
 section{
   padding: 1em 0;
-  &.main{
-    padding: 0.05px;
-    background-color: #222222;
-  }
   &.movieList{
-    width: 960px;
+    width: calc(100% - 30px);
+    max-width: 960px;
+    padding: 0;
+    margin-bottom: 30px;
   }
 }
 
@@ -89,6 +105,13 @@ section{
 }
 .tighten{
   width: fit-content;
+  width: -moz-fit-content;
+}
+
+.flex-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .flex{
@@ -118,6 +141,7 @@ section{
   padding: 5px 0;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
+  width: 100%;
 }
 
 /* width */
@@ -134,4 +158,17 @@ section{
   &:hover {
     background-color: #9e9e9e;
   }
+}
+
+.ticket{
+  margin-top: 2em;
+  .movieEntry{
+    max-width: 640px;
+    padding: 0 15px;
+    margin: auto;
+  }
+}
+
+.full-height{
+  height: calc(100vh - 52px);
 }

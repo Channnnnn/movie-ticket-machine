@@ -1,3 +1,14 @@
+@media screen and (max-width: 800px){
+  .movieEntry{
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "poster details" "none action";
+  }
+  .entry-action{
+    grid-area: action;
+  }
+}
+
 .movieEntry{
   display: grid;
   grid-template-columns: auto auto auto;
@@ -49,10 +60,16 @@
       font-size: 1.1em;
       margin: 5px 0;
       color: #333;
+      &.dark-mode{
+        color: white;
+      }
     }
     .entry-description{
       color: #555;
       font-size: 0.85em;
+      &.dark-mode{
+        color: #cccccc;
+      }
     }
   }
   .entry-action{
