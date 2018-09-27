@@ -61,6 +61,9 @@ function UpsertMovie(movie) {
     movie.showtimes = showtimesArray
   }
 
+  movie.price = parseInt(movie.price, 10) || 'N/A'
+  movie.duration = parseInt(movie.duration, 10) || 'N/A'
+
   return new Promise((resolve, reject) => {
     let name = movie.name
     delete movie.name

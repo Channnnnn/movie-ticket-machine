@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from '../../firebase';
+import firebase from '../../_firebase';
 import './movieForm.scss';
 import script from '../../script';
 
@@ -11,6 +11,12 @@ class MovieForm extends Component {
       movieForm: JSON.parse(JSON.stringify(this.props.movie))
     }
     this.handleClear = this.handleClear.bind(this)
+  }
+
+  componentDidUpdate(prevProps){
+    if (this.props.movie != prevProps.movie){
+      this.forceUpdate()
+    }
   }
 
   handleInputChange(event){
@@ -85,7 +91,7 @@ class MovieForm extends Component {
           prevState.movieForm['posterStorage'] = fileLocation;
           return prevState;
         }, () => {
-          script.UpsertMovie(data)
+          script.UpsertMovie(data).then(this.props.GetAllMovie())
           let newPoster = this.state.movieForm.posterStorage;
           if (newPoster !== originalPoster){
             script.RemovePoster(originalPoster)
@@ -95,7 +101,7 @@ class MovieForm extends Component {
     }
     else {
       console.log('No file, proceed')
-      script.UpsertMovie(data)  
+      script.UpsertMovie(data).then(this.props.GetAllMovie())  
     }  
     if (originalName != newName){
       script.RemoveMovie(originalName).then(() => {
@@ -147,13 +153,13 @@ class MovieForm extends Component {
         </div>
         <div className="input-text">
           <label htmlFor="price">Price</label>
-            <input type="text" name="price" id="price" onChange={this.handleInputChange.bind(this)}
+            <input type="number" name="price" id="price" onChange={this.handleInputChange.bind(this)}
             value={movie.price} disabled={!editable}/>
           <span>THB</span>
         </div>
         <div className="input-text">
           <label htmlFor="duration">Duration</label>
-            <input type="text" name="duration" id="duration" onChange={this.handleInputChange.bind(this)}
+            <input type="number" name="duration" id="duration" onChange={this.handleInputChange.bind(this)}
             value={movie.duration} disabled={!editable}/>
           <span>min</span>
         </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import MovieForm from "../components/MovieForm";
-import firebase from "../firebase";
 import script from "../script";
 import Navbar from '../components/Navbar';
 
